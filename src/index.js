@@ -13,11 +13,7 @@ class App extends React.Component {
     );
   }
 
-  componentDidUpdate() {
-    console.log("rerendered!");
-  }
-
-  render() {
+  renderContent() {
     if (this.state.errorMessage && !this.state.lat) {
       return <div>Error: {this.state.errorMessage}</div>;
     }
@@ -25,6 +21,12 @@ class App extends React.Component {
       return <SeasonDisplay lat={this.state.lat} />;
     }
     return <LoadingSpinner />;
+  }
+
+  render() {
+    return <div className="border red">
+      {this.renderContent()}
+    </div>
   }
 }
 
